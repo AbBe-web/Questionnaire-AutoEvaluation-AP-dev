@@ -384,7 +384,18 @@ if (typeof window.sessionStorage !== "undefined") {
   }
 }
 
-const data = storedData ? JSON.parse(storedData) : rawData;
+let parsedStored = null;
+
+if (storedData) {
+  try {
+    parsedStored = JSON.parse(storedData);
+  } catch (e) {
+    console.warn("JSON session invalide", e);
+  }
+}
+
+const data = parsedStored || rawData;
+
 // 🔹 Affichage date du jour (format français)
 const today = new Date();
 const formattedDate = today.toLocaleDateString("fr-FR");
