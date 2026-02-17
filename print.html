@@ -415,12 +415,15 @@ document.getElementById("content").innerHTML = `
 
 <p class="synthese-line">
   <strong>Niveau d’activité physique :</strong>
-${data.resultats?.niveau_activite
-   ? data.resultats.niveau_activite.replace("_"," ")
-   : "non disponible"}
-  <span class="small">
-    (volume estimé : ${data.resultats.met_minutes_semaine} MET-min / semaine)
-  </span>
+  ${data.resultats.niveau_activite.replace("_"," ")}
+  ${
+    data.meta.questionnaires === "GPAQ" &&
+    data.resultats.met_minutes_semaine != null
+      ? `<span class="small">
+           (volume estimé : ${data.resultats.met_minutes_semaine} MET-min / semaine)
+         </span>`
+      : ""
+  }
 </p>
 
 ${data.resultats.pas_moyens_jour_1_mois
