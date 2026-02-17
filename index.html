@@ -339,15 +339,22 @@ function back() {
 
     const target = state.navStack[state.navStack.length - 1];
 
-    state.navMode = "back";   // ⬅️ on passe en mode retour
+if (!target) {
+  console.warn("NavStack invalide → retour sécurisé accueil");
+  renderHome();
+  return;
+}
 
-    app.innerHTML = "";
+state.navMode = "back";   // ⬅️ on passe en mode retour
 
-    goToScreen(target);
+app.innerHTML = "";
 
-    state.navMode = "forward"; // ⬅️ on réactive mode normal
+goToScreen(target);
 
-    return;
+state.navMode = "forward"; // ⬅️ on réactive mode normal
+
+return;
+
   }
 
   if (state.navStack && state.navStack.length === 1) {
