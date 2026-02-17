@@ -14,10 +14,12 @@ body {
 
 .container {
   max-width:720px;
-  margin:auto;
-  padding:20px;
+  margin:40px auto;
+  padding:30px;
   background:white;
   min-height:100vh;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
 }
 
 h1,h2,h3 {
@@ -54,16 +56,33 @@ p + p {
   padding: 14px;
   margin: 14px 0 6px 0;
   font-size: 16px;
-  border-radius: 6px;
+  border-radius: 10px;              /* plus doux */
   border: none;
-  background: #007BFF;
+  background: #2563eb;              /* bleu plus moderne */
   color: white;
   cursor: pointer;
+  transition: all 0.15s ease;       /* animation fluide */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 
 .btn.secondary {
-  background: #6c757d;
-  margin-top: 18px;      /* séparation claire avant le bouton Retour */
+  background: #e5e7eb;
+  color: #333;
+}
+
+.btn.secondary:hover {
+  background: #d1d5db;
 }
 
 .btn:disabled {
@@ -80,15 +99,19 @@ p + p {
 }
 
 .progress {
-  height:6px;
-  background:#ddd;
-  margin:15px 0;
+  height:8px;
+  background:#e5e7eb;
+  border-radius: 20px;
+  overflow:hidden;
 }
 
 .progress-bar {
-  height:6px;
-  background:#4caf50;
+  height:8px;
+  background: linear-gradient(90deg,#22c55e,#16a34a);
+  border-radius: 20px;
+  transition: width 0.3s ease;
 }
+
 .progress-step {
   font-size:12px;
   color:#777;
@@ -110,13 +133,21 @@ p + p {
   color:#555;
   margin-top:8px;
 }
-
 input[type=number],
 input[type=range],
 textarea {
   width:100%;
-  padding:10px;
+  padding:12px;
   font-size:16px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  transition: border 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline:none;
+  border:1px solid #2563eb;
 }
 
 textarea {
